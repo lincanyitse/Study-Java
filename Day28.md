@@ -55,8 +55,15 @@
 
 ### 模糊查询
   > 在WHERE子句中的查询条件, 可以借助 LIKE 子句来实现模糊查询
-  + `%`：匹配表示0到多个字符;
-  + `_`：匹配单个字符;
+  >
+  > ```SQL
+  > 列名 LIKE '匹配方法'
+  > ```
+  >
+  > 
+  >
+  > + `%`：匹配表示0到多个字符;
+  > + `_`：匹配单个字符;
 
 ### 函数或表达式查询
   + 可以使用表达式和函数来获取符合结果的数据;
@@ -170,7 +177,7 @@
   >   </tr>
   >   <tr>
   >     <th>全外连接</th>
-  >     <th>包含左、右两个表的全部行，不管另外一边的表中是否存在与它们匹配的行。 full outer join</th>
+  >     <th>包含左、右两个表的全部行, 不管另外一边的表中是否存在与它们匹配的行。 full outer join</th>
   >   </tr>
   >   <tr>
   >     <th>自连接</th>
@@ -181,4 +188,4 @@
 ---
 <span style="float:left;display:inline-block;">[上一章](Day27.md)</span>
 <span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day28.md)</span>
+<span style="float:right;">[下一章](Day29.md)</span>
