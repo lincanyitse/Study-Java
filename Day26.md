@@ -190,6 +190,23 @@
 >
 > ```SQL
 > insert into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...]);
+>
+> -- 批量添加多条数据
+> -- insert first：对于每一行数据，仅仅插入到第一个when条件成立的表，不继续检查其它条件。
+> insert all 
+> into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
+> into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
+> ...
+> select * from dual;
+>
+> -- insert all ： 对于每一行数据，对每个when条件都进行检查，假设满足条件就运行插入操作。 
+> insert first
+> when 列名 = 条件 then 
+> into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
+> when 列名 = 条件 then 
+> into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
+> ...
+> select * from dual;
 > ```
 >
 > #### 修改数据
