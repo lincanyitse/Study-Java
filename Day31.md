@@ -266,6 +266,7 @@
 ## HTML 5新增属性
 
 + `<input>` ：新增内容如下表：
+
     |属性名|用法|描述|
     |:---:|:---:|:---|
     |placeholder|`<input type="text" placeholder="请输入用户名"> `|占位符 , 在输入框显示提示文字|
@@ -276,11 +277,13 @@
     |accesskey|`<input type="text" accesskey="s">`|激活控件的快捷键, 采用 ALT + 字母 的形式|
 
 + `<canvas>` 新元素
+
     |标签|描述|
     |:---:|:---|
     |`<canvas>`|标签定义图形，比如图表和其他图像。该标签基于 JavaScript 的绘图 API|
 
 + 新多媒体元素
+
     |标签|描述|
     |:---:|:---|
     |`<audio>`|定义音频内容|
