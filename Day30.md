@@ -1,4 +1,4 @@
-# <h1> 序列、约束、视图、索引 </h1>
+# 序列、约束、视图、索引
 
 ## oracle 序列
 
@@ -10,14 +10,14 @@
 + 创建：
 
     ```SQL
-    create sequence 序列名 
-    [ start with 序列初值 ] 
+    create sequence 序列名
+    [ start with 序列初值 ]
     [ increment by 递增值|递减值 ]
     [ maxvalue 最大值 | nomaxvalue ]
     [ minvalue 最小值 | nominvalue ]
     [ cycle | nocycle ] -- 表示在递增至最大值或递减至最小值之后是否继续循环
     [ cache 缓存数 | nocache ] -- 默认是20
-    ``` 
+    ```
 
 + 使用：
 
@@ -48,42 +48,42 @@
     > 用于确保数据库数据满足特定的商业逻辑或者企业规则, 如果定义了约束, 并且数据不符合校验规则, 那么DML操作（INSERT、UPDATE、DELETE）将不能成功执行, 约束有五种:非空约束(`NOT NULL`)、唯一约束(`UNIQUE`)、主键约束(`PRIMARY KEY`)、外键约束(`FOREINGKEY`) 以及检查约束(`CHECK`)
 
 + 类型
-    + 非空约束
+  + 非空约束
         > 用于确保字段值不为空
 
-    + 唯一约束
+  + 唯一约束
         > 用于保证字段或者字段的组合不出现重复值
 
-    + 主键约束
+  + 主键约束
         > + 从功能上看相当于非空（NOTNULL）且唯一（UNIQUE）的组合;
         > + 可以用来在表中唯一的确定一行数据;
         > + 既可以在列级定义, 也可以在表级定义
 
-    + 外键约束
+  + 外键约束
         > 外键约束条件定义在两个表的字段或一个表的两个字段上, 用于保证相关两个字段的关系;
         > 外键约束对一致性的保护
         > + 从表上定义的外键的列值, 必须从主表被参照的列值中选取, 或者为 NULL ;
         > + 当主表参照列的值被从表参照时, 主表的该行记录不允许被删除;
 
-    + 检查约束
+  + 检查约束
         > 用来强制在字段上的每个值都要满足Check中定义的条件
 
 + 操作
 
-    + 建表时添加约束
+  + 建表时添加约束
 
-        + `字段声明 [CONSTRAINT 约束名] 约束类型,` 列级约束：是与列的定义一起定义的
-        
-            ```SQL
-            CREATE TABLE student_xxx(
-            ID NUMBER PRIMARY KEY, -- 列级主键约束
-            NAME VARCHAR2(50) CONSTRAINT student_name_un NOT NULL, -- 非空约束
-            gender char(1) check(gender in ('F','M')), -- 列级检查约束
-            phone VARCHAR2(18) CONSTRAINT student_phone_un UNIQUE, -- 唯一约束
-            );
-            ```
+    + `字段声明 [CONSTRAINT 约束名] 约束类型,` 列级约束：是与列的定义一起定义的
 
-        + `[CONSTRAINT 约束名] 约束类型 (已声明的字段名,...)` 表级约束：是在列定义之后定义
+        ```SQL
+        CREATE TABLE student_xxx(
+        ID NUMBER PRIMARY KEY, -- 列级主键约束
+        NAME VARCHAR2(50) CONSTRAINT student_name_un NOT NULL, -- 非空约束
+        gender char(1) check(gender in ('F','M')), -- 列级检查约束
+        phone VARCHAR2(18) CONSTRAINT student_phone_un UNIQUE, -- 唯一约束
+        );
+        ```
+
+    + `[CONSTRAINT 约束名] 约束类型 (已声明的字段名,...)` 表级约束：是在列定义之后定义
 
             ```SQL
             create table class_xxx(
@@ -102,16 +102,16 @@
             constraint student_cls_un foreign key(cid) references class_xxx (id) on delete set null -- 外键
             );
             ```
-    
-    + 建表后添加约束
 
-        + `alter table 表名 add [ constraint 约束名 ] 约束类型 (已声明的字段名,...)` 添加表级约束
+  + 建表后添加约束
 
-        + `alter table 表名 modify (字段声明 [CONSTRAINT 约束名] 约束类型)` 给单个字段添加约束
+    + `alter table 表名 add [ constraint 约束名 ] 约束类型 (已声明的字段名,...)` 添加表级约束
 
-    + 删除约束
+    + `alter table 表名 modify (字段声明 [CONSTRAINT 约束名] 约束类型)` 给单个字段添加约束
 
-        + `alter table 表名 drop constraint 约束名`
+  + 删除约束
+
+    + `alter table 表名 drop constraint 约束名`
 
 ---
 
@@ -131,10 +131,10 @@
 
 + 操作
 
-    + 创建视图
+  + 创建视图
 
         ```SQL
-            CREATE [OR REPLACE] [{FORCE|NOFORCE}] VIEW 视图名[(列1 别名[, 列2 别名,…])] 
+            CREATE [OR REPLACE] [{FORCE|NOFORCE}] VIEW 视图名[(列1 别名[, 列2 别名,…])]
             AS select_statement
             [WITH {READ ONLY|CHECK OPTION}];
         ```
@@ -151,48 +151,57 @@
         >
         > 注：创建视图的DDL语句是 CREATE VIEW , 用户必须有创建视图的系统权限, 才能创建视图;数据库管理员可以通过DCL语句授予用户创建视图的权限, 例：
         >   ```SQL
-        >   GRANT CREATE VIEW TO oracle; -- 授权oracle创建视图的权限 
+        >   GRANT CREATE VIEW TO oracle; -- 授权oracle创建视图的权限
         >   ```
         > 解析：oracle是用户名
 
-    + 查询视图
+  + 查询视图
 
-        + 查询简单视图
-            > 查询视图和查询表的操作相同
-            >   ```SQL
-            >   SELECT * FROM 视图名;
-            >   ```
-            > 注：创建视图时可以指定列名, 此时视图的列名, 和创建时指定的列名一致, 不一定是基表的原列名;
-
-        + 查询复杂视图
-            > 复杂视图指在子查询中包含了表达式、单行函数或分组函数的视图;
-            > 复杂视图不能进行增删改操作, 例：
-            > ```SQL
-            > SELECT * FROM 视图名;
-            > ```
-            > 注意：复杂视图不允许DML操作, 会报错;
-
-    + 通过数据字典查询视图信息
-        > 要查询视图的相关信息比如数据库有哪些视图等, 需要用到oracle数据字典;
+    + 查询简单视图
+        > 查询视图和查询表的操作相同
         >
-        > 与视图相关的数据字典有：
-        > + `USER_OBJECTS` 例：
-        > ```SQL
-        > SELECT object_name FROM user_objects WHERE object_type = 'VIEW';
-        > ```
-        > + `USER_VIEWS` 例：
-        > ```SQL
-        > SELECT text FROM user_views WHERE view_name = 'V_EMP_LZH';
-        > ```
-        > + `USER_UPDATABLE_COLUMNS` 例：
-        > ```SQL
-        > SELECT column_name, insertable, updatable, deletable FROM user_updatable_columns
-        > WHERE table_name = 'V_EMP_LZH';
-        > ```
+        >   ```SQL
+        >   SELECT * FROM 视图名;
+        >   ```
+        >
+        > 注：创建视图时可以指定列名, 此时视图的列名, 和创建时指定的列名一致, 不一定是基表的原列名;
 
-    + 删除视图
+    + 查询复杂视图
+        > 复杂视图指在子查询中包含了表达式、单行函数或分组函数的视图;
+        > 复杂视图不能进行增删改操作, 例：
+        >
+        > ```SQL
+        > SELECT * FROM 视图名;
+        > ```
+        >
+        > 注意：复杂视图不允许DML操作, 会报错;
+
+  + 通过数据字典查询视图信息
+    > 要查询视图的相关信息比如数据库有哪些视图等, 需要用到oracle数据字典;
+    >
+    > 与视图相关的数据字典有：
+    > + `USER_OBJECTS` 例：
+    >
+    > ```SQL
+    > SELECT object_name FROM user_objects WHERE object_type = 'VIEW';
+    > ```
+    >
+    > + `USER_VIEWS` 例：
+    >
+    > ```SQL
+    > SELECT text FROM user_views WHERE view_name = 'V_EMP_LZH';
+    > ```
+    >
+    > + `USER_UPDATABLE_COLUMNS` 例：
+    >
+    > ```SQL
+    > SELECT column_name, insertable, updatable, deletable FROM user_updatable_columns
+    > WHERE table_name = 'V_EMP_LZH';
+    > ```
+
+  + 删除视图
         > 当不再需要视图的定义, 可以使用DROP VIEW语句删除视图, 语法如下：
-        + `DROP VIEW 视图名;`
+    + `DROP VIEW 视图名;`
 
 ---
 
@@ -207,27 +216,31 @@
 
 + 操作
 
-    + 创建索引
-        ```SQL
-        CREATE [UNIQUE] INDEX index_name ON table(column[, column…]);
-        ```
-        >语法解析：
-        >   + `index_name` 表示索引名称
-        >   + `table` 表示表名
-        >   + `column` 表示建立索引列名, 可以建立单列索引或复合索引
-        >   + `UNIQUE` 表示唯一索引,当某列任意两行的值都不相同的时候可以建立, 而当建立 Primary Key( 主键)或者
-        >   + `Unique constraint` (唯一约束)时, 唯一索引将被自动建立
-    
-    + 重建索引
-        ```SQL
-        ALTER INDEX index_name REBUILD;
-        ```
-    
-    + 删除索引
-        ```SQL
-        DROP INDEX index_name;
-        ```
-    
+  + 创建索引
+
+    ```SQL
+    CREATE [UNIQUE] INDEX index_name ON table(column[, column…]);
+    ```
+
+    >语法解析：
+    > + `index_name` 表示索引名称
+    > + `table` 表示表名
+    > + `column` 表示建立索引列名, 可以建立单列索引或复合索引
+    > + `UNIQUE` 表示唯一索引,当某列任意两行的值都不相同的时候可以建立, 而当建立 Primary Key( 主键)或者
+    > + `Unique constraint` (唯一约束)时, 唯一索引将被自动建立
+
+  + 重建索引
+
+    ```SQL
+    ALTER INDEX index_name REBUILD;
+    ```
+
+  + 删除索引
+
+    ```SQL
+    DROP INDEX index_name;
+    ```
+  
     > 为提升查询效率, 创建和使用索引的原则：
     > + 为经常出现在WHERE子句中的列创建索引
     > + 为经常出现在ORDER BY、DISTINCT后面的字段建立索引。
@@ -238,6 +251,5 @@
     > + 删除很少被使用的、不合理的索引
 
 ---
-<span style="float:left;display:inline-block;">[上一章](Day29.md)</span>
-<span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day31.md)</span>
+
+[上一章](Day29.md) [目录](SUMMARY.md) [下一章](Day31.md)

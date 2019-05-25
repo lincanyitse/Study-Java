@@ -1,4 +1,4 @@
-<h1 id="topbar">Oracle的基本操作</h1>
+# Oracle的基本操作
 
 ## Oracle命令行
 
@@ -61,26 +61,26 @@
 > + 查询数据库所有用户
 >
 > ```SQL
-> select * from dba_users; 
+> select * from dba_users;
 > ```
 >
 > + 查询当前能管理的所有用户
 >
 > ```SQL
-> select * from all_users; 
+> select * from all_users;
 > ```
 >
 > + 查询当前用户信息
 >
 > ```SQL
 > select * from user_users;
-> 
+>
 > ```
 >
 > + 显示当前用户
 >
 > ```SQL
-> show user; 
+> show user;
 > ```
 >
 > #### 切换用户：
@@ -123,12 +123,12 @@
 > delete table 表名;
 > // 或者
 > truncate table 表名;
-> ``` 
+> ```
 >
 > + 立即删除表结构
 >
 > ```SQL
-> drop table 表名 purge ;  
+> drop table 表名 purge ;
 > ```
 >
 > + 把表结构放进回收站
@@ -174,7 +174,7 @@
 > + 清空回收站
 >
 > ```SQL
-> purge recyclebin; 
+> purge recyclebin;
 > ```
 >
 > + 删除回收站某个表
@@ -193,17 +193,17 @@
 >
 > -- 批量添加多条数据
 > -- insert first：对于每一行数据，仅仅插入到第一个when条件成立的表，不继续检查其它条件。
-> insert all 
+> insert all
 > into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
 > into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
 > ...
 > select * from dual;
 >
-> -- insert all ： 对于每一行数据，对每个when条件都进行检查，假设满足条件就运行插入操作。 
+> -- insert all ： 对于每一行数据，对每个when条件都进行检查，假设满足条件就运行插入操作。
 > insert first
-> when 列名 = 条件 then 
+> when 列名 = 条件 then
 > into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
-> when 列名 = 条件 then 
+> when 列名 = 条件 then
 > into 表名[(列名1[, 列名2, ...])]values(值1[, 值2, ...])
 > ...
 > select * from dual;
@@ -227,8 +227,5 @@
 > select 字段名1 [别名1][, 字段名2 [别名2], ...] from 表名 [where 条件];
 > ```
 
-###  设置
 ---
-<span style="float:left;display:inline-block;">[上一章](Day25.md)</span>
-<span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day27.md)</span>
+[上一章](Day25.md) [目录](SUMMARY.md) [下一章](Day27.md)

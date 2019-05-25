@@ -1,4 +1,4 @@
-<h1 id="topbar">Junit、反射、注解</h1>
+# Junit、反射、注解
 
 ## Junit单元测试
 
@@ -226,7 +226,7 @@
 
 + Method类中常用方法
   1. `Object invoke(Object obj, Object... args)`：根据参数args调用对象obj的该成员方法如果obj=null，则表示该方法是静态方法;
-  
+
      ```Java
      Class clazz = Class.forName("java.lang.String");
      // 使用Class对象创建一个String对象
@@ -240,7 +240,7 @@
      // 打印输出：o
      System.out.println(invoke);
      ```
-  
+
   2. `void setAccessible(boolean flag)`：暴力反射，设置为可以直接调用私有修饰的成员方法
 
      ```Java
@@ -275,7 +275,7 @@
      // 获取一个对应Math类里面变量名为PI且修饰符为public的Field对象
      Field field = clazz.getField("PI");
      ```
-  
+
   2. `Field getDeclaredField(String name)`：根据属性名获得属性对象，包括private修饰的;
 
      ```Java
@@ -284,7 +284,7 @@
      // 获取一个对应String类里面变量名为value的Field对象
      Field field = clazz.getDeclaredField("value");
      ```
-  
+
   3. `Field[] getFields()`：获取所有的public修饰的属性对象，返回数组;
 
      ```Java
@@ -293,7 +293,7 @@
      // 获取Math类里面所有修饰符为public的Field对象
      Field[] fields = clazz.getFields();
      ```
-  
+
   4. `Field[] getDeclaredFields()`：获取所有的属性对象，包括private修饰的，返回数组;
 
      ```Java
@@ -360,7 +360,7 @@
 ### 自定义注解
 
 + 定义格式
-  
+
   ```Java
   public @interface 注解名{
 
@@ -385,9 +385,9 @@
       ```
 
   4. 属性适用的数据类型
-     + 八种基本数据类型（int,float,boolean,byte,double,char,long,short)  
-     + String类型，Class类型，枚举类型，注解类型  
-     + 以上所有类型的一维数组  
+     + 八种基本数据类型（int,float,boolean,byte,double,char,long,short)
+     + String类型，Class类型，枚举类型，注解类型
+     + 以上所有类型的一维数组
 
 ---
 
@@ -413,7 +413,7 @@
 
 + 使用注解
   1. 定义类在成员方法上使用Book注解
-  
+
      ```Java
      public class BookShelf {
          @Book(value = "西游记",price = 998,authors = {"吴承恩","白求恩"})
@@ -423,8 +423,8 @@
      }
      ```
 
-     > 使用注意事项：  
-     > + 如果属性有默认值，则使用注解的时候，这个属性可以不用赋值。  
+     > 使用注意事项：
+     > + 如果属性有默认值，则使用注解的时候，这个属性可以不用赋值。
      > + 如果属性没有默认值，那么在使用注解时一定要给属性赋值。
 + 特殊属性value
   1. 当注解中只有一个属性且名称是value，在使用注解时给value属性赋值可以直接给属性值，无论value是单值元素还是数组类型。
@@ -447,12 +447,12 @@
 
   + `@Target`：指明此注释用在哪个位置， 如果不写默认是任何地方都可以使用 。
     > 可选的参数值在枚举类ElemenetType中包括：
-    > + TYPE： 用在类,接口上 FIELD：用在成员变量上  
-    > + METHOD： 用在方法上  
-    > + PARAMETER：用在参数上  
-    > + CONSTRUCTOR：用在构造方法上  
-    > + LOCAL_VARIABLE：用在局部变量上  
-    > + ANNOTATION_TYPE：用在注解上  
+    > + TYPE： 用在类,接口上 FIELD：用在成员变量上
+    > + METHOD： 用在方法上
+    > + PARAMETER：用在参数上
+    > + CONSTRUCTOR：用在构造方法上
+    > + LOCAL_VARIABLE：用在局部变量上
+    > + ANNOTATION_TYPE：用在注解上
   + `@Retention`：定义该注解的生命周期(有效范围)。
     > 可选的参数值在枚举类型RetentionPolicy中包括
     > + SOURCE：注解只存在于Java源代码中，编译生成的字节码文件中就不存在了。
@@ -496,6 +496,4 @@
 
 ---
 
-<span style="float:left;display:inline-block;">[上一章](Day24.md)</span>
-<span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day26.md)</span>
+[上一章](Day24.md) [目录](SUMMARY.md) [下一章](Day26.md)

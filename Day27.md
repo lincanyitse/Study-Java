@@ -1,11 +1,13 @@
-# <h1> Oracle简单语句、常用函数 </h1>
+# Oracle简单语句、常用函数
 
 ## 函数
 
 ---
 
-#### 单行函数
+### 单行函数
+
 > 单行函数的一些特点
+>
 > + 操作数据对象
 > + 接受一个参数返回一个结果
 > + 只对一行进行变换
@@ -14,7 +16,8 @@
 > + 可以嵌套
 > + 参数可以是一列或一个值
 
-#### 多行函数
+### 多行函数
+>
 > + 输入多个参数,或者是内部扫描多次,输出一个结果
 > + 处理的数据是多条的
 
@@ -33,9 +36,10 @@
 + long
   > long数据类型可以存放2GB的字符数据,它是从早期版本中继承下来的。但是LONG类型有诸多限制,所以不建议使用
   > 每个表只能有一个LONG类型列:
-    + 不能作为主键；
-    + 不能建立索引；
-    + 不能出现在查询条件中等
+
+  + 不能作为主键；
+  + 不能建立索引；
+  + 不能出现在查询条件中等
 + clob
   > 字符型大型对象（Character Large Object）,则与字符集相关,适于存贮文本型的数据（如历史档案、大部头著作等）
 
@@ -50,7 +54,7 @@
   + `upper(char)` 用于将字符转换为大写形式
   + `Lower(char)` 用于将字符转换为小写形式
   + `Initcap(cahr)` 用于将字符串中每个单词的首字符大写,其余字符小写
-  > 注:Oracle中命令语句不区分大小写,但是数据内容区分大小写 
+  > 注:Oracle中命令语句不区分大小写,但是数据内容区分大小写
 
 + 字符截去函数
   + `trim(c2 from c1)` 用于从c1的前后截取c2
@@ -70,6 +74,7 @@
   + `instr(char1, char2[, m[, n]])` 用于返回子串char2在源字符串char1中的位置,从m的位置开始搜索,没有指定m,从第1个字符开始搜索n用于指定子串的第n次出现次数,如果不指定取值1如果在char1中没有找到子串char2,返回0
 
 ---
+
 ### 数值类型
 
 + Number
@@ -89,6 +94,7 @@
   >
 
 #### 数值函数
+
 + `round(m[, m])` 用于将参数n按照m的数字要求四舍五入
   > 注:参数中的n可以是任何数字,指要被处理的数字
   > + m必须是整数
@@ -103,6 +109,7 @@
 + `floor(n)` 用于向下取整
 
 ---
+
 ### 日期类型
 
 + Date
@@ -136,7 +143,7 @@
 #### 日期函数
 
 + `to_date(char[, fmt])` 用于将字符串按照定制格式转换为日期类型;
-  
+
   > 常用的日期格式如下:
   >
   >>  | 格式 | 含义 |
@@ -154,58 +161,8 @@
   >>  | MI | 显示分钟 |
   >>  | SS | 显示秒 |
   >
-  > RR日期格式： 
-  >> <table style="text-align:center">
-  >>    <tr>
-  >>        <th style="min-width:100px;">当前年</th>
-  >>        <th style="min-width:100px;">日期</th>
-  >>        <th style="min-width:100px;">RR格式</th>
-  >>        <th style="min-width:100px;">YY格式</th>
-  >>    </tr>
-  >>    <tr >
-  >>        <td>1995</td>
-  >>        <td>27-OCT-95</td>
-  >>        <td>1995</td>
-  >>        <td>1995</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td>1995</td>
-  >>        <td>27-OCT-17</td>
-  >>        <td>2017</td>
-  >>        <td>1917</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td>2001</td>
-  >>        <td>27-OCT-17</td>
-  >>        <td>2017</td>
-  >>        <td>1917</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td>2001</td>
-  >>        <td>27-OCT-95</td>
-  >>        <td>1995</td>
-  >>        <td>2095</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td rowspan="2" colspan="2"></td> 
-  >>        <td colspan="2">指定的年份：</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td>0-49</td>
-  >>        <td>50-99</td>
-  >>    </tr>
-  >>    <tr>
-  >>        <td rowspan="2">当前的年份：</td> 
-  >>        <td>0-49</td>
-  >>        <td>返回本世纪的日期</td>
-  >>        <td>返回在当前世纪之前的日期</td>    
-  >>    </tr>
-  >>    <tr>
-  >>        <td>50-99</td>
-  >>        <td>返回在当前日期之后的当前世纪的日期</td>
-  >>        <td>返回本世纪的日期</td>
-  >>    </tr>
-  >> </table>
+  > RR日期格式：
+  >> <table style="text-align:center"><tr><th style="min-width:100px;">当前年</th><th style="min-width:100px;">日期</th><th style="min-width:100px;">RR格式</th><th style="min-width:100px;">YY格式</th></tr><tr ><td>1995</td><td>27-OCT-95</td><td>1995</td><td>1995</td></tr><tr><td>1995</td><td>27-OCT-17</td><td>2017</td><td>1917</td></tr><tr><td>2001</td><td>27-OCT-17</td><td>2017</td><td>1917</td></tr><tr><td>2001</td><td>27-OCT-95</td><td>1995</td><td>2095</td></tr><tr><td rowspan="2" colspan="2"></td><td colspan="2">指定的年份：</td></tr><tr><td>0-49</td><td>50-99</td></tr><tr><td rowspan="2">当前的年份：</td><td>0-49</td><td>返回本世纪的日期</td><td>返回在当前世纪之前的日期</td></tr><tr><td>50-99</td><td>返回在当前日期之后的当前世纪的日期</td><td>返回本世纪的日期</td></tr></table>
 
 + `to_char(日期数据, 格式)` 用于把日期数据转换为字符数据，常用于格式化显示日期数据;
 
@@ -228,10 +185,9 @@
 + `trunc(date)` 对日期进行截断
 
 #### 日期相减
+
   > 使用日期数据相减 , 得到两个日期之间的天数差 , 不足一天用小数表示
 
 ---
 
-<span style="float:left;display:inline-block;">[上一章](Day26.md)</span>
-<span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day28.md)</span>
+[上一章](Day26.md) [目录](SUMMARY.md) [下一章](Day28.md)

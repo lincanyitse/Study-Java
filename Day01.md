@@ -46,6 +46,5 @@ PHP：1994~1995
 + > JRE (Java Runtime Environment) ：是Java程序的运行时环境，包含 JVM 和运行时所需的 核心类库;
 + > JDK (Java Development Kit)：是Java程序开发工具包，包含 JRE 和开发人员使用的工具。
 
-<span style="float:left;display:inline-block;">[上一章](README.md)</span>
-<span style="margin-left:43%">[目录](SUMMARY.md)</span>
-<span style="float:right;">[下一章](Day02.md)</span>
+---
+[上一章](README.md) [目录](SUMMARY.md) [下一章](Day02.md)
