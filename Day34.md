@@ -242,7 +242,7 @@
     4. 隐藏数组：在每个函数的内部都有一个隐藏的数组 , 名字叫：arguments;
 
   + 隐藏数组的执行过程
-  
+
     ```flow
     op1=>operation: "sum 2,3,4"
     op2=>operation: "function sum(a,b) {
@@ -462,6 +462,7 @@
         |Alt|18|Left Arrow|37|`=+`|187|`]}`|221|
         |Cape Lock|20|Up Arrow|38|`,<`|188|`'"`|222|
   + 小结
+
     |事件名|作用|
     |:---:|:---:|
     |onclick|单击|
