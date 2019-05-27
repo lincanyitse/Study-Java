@@ -242,14 +242,18 @@
     4. 隐藏数组：在每个函数的内部都有一个隐藏的数组 , 名字叫：arguments;
 
   + 隐藏数组的执行过程
-
-    ```mermaid
-    graph TD
-        start["sum 2,3,4"]
-        one["function sum(a,b) {arguments[0]=2;arguments[1]=3;arguments[2]=4:}"]
-        two["执行的时候从arguments数组中取出值a=arguments[0];b=arguments[1];alter(a+b)"]
-        start --> one
-        one --> two
+  
+    ```flow
+    op1=>operation: "sum 2,3,4"
+    op2=>operation: "function sum(a,b) {
+        arguments[0]=2;
+        arguments[1]=3;
+        arguments[2]=4;
+        }"
+    op3=>operation: "执行的时候从arguments数组中取出值
+    a=arguments[0];b=arguments[1];
+    alter(a+b);"
+    op1(right)->op2(right)->op3(right)
     ```
 
   + 匿名函数
