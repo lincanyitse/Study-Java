@@ -291,6 +291,3 @@ var 变量名 = new Date() // 创建一个当前的时间和日期对象
     |parentNode|得到当前元素的父节点|
     |nextSibling|得到当前元素的下一个兄弟节点|
     |previousSibling|得到当前元素的上一个兄弟节点|
-
----
-[上一章](Day34.md) [目录](SUMMARY.md) [下一章](Day36.md)
