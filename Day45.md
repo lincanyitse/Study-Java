@@ -176,6 +176,7 @@ Servlet 处理表单数据，这些数据会根据不同的情况使用不同的
    ```Java
    request.getRequestDispatcher("内部地址").forward(request,response);
    ```
+
 + 携带参数
 
    ```jsp
