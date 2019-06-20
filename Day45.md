@@ -176,6 +176,11 @@ Servlet 处理表单数据，这些数据会根据不同的情况使用不同的
    ```Java
    request.getRequestDispatcher("内部地址").forward(request,response);
    ```
++ 携带参数
+
+   ```jsp
+   ${param.表单数据名} <!-- 默认使用 Attribute , 需要使用要 Parameter 该这样-->
+   ```
 
 #### 重定向
 
